@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebAPI Batch Requests Handler</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <script src="Scripts/jquery-3.2.1.min.js"></script>
+    <script src="Scripts/batch.js"></script>
+
+</head>
+<body>
+    <h1>Hello, world!</h1>
+    <button onclick='sendBatch();'>Send Sync batch</button>
+    <button onclick='sendAsyncBatch();'>Send Async batch</button>
+
+
+    <script type="text/javascript">
+        function sendBatch() {
+            console.time("syncBatch");
+            $.ajaxBatch({
+                url: '/api/batch',
+                data: [
+                    {
+                    type: 'GET',
+                    url: '/get1'
+                    },
+                    {
+                    type: 'GET',
+                    url: '/get2',
+                    },
+                    {
+                        type: 'GET',
+                        url: '/get3',
+                    }
+                ],
+                complete: function (xhr, status, data) {
+                    for (var i = data.length - 1; i >= 0; i--) {
+                    console.log(data[i]);
+                    };
+                    console.timeEnd("syncBatch");
+                }
+        });
+	 }
+        function sendAsyncBatch() {
+            console.time("asyncBatch");
+            $.ajaxBatch({
+	            url: '/api/asyncbatch',
+	            data: [
+                    {
+                        type: 'GET',
+                        url: '/get1'
+                    },
+                    {
+                        type: 'GET',
+                        url: '/get2',
+                    },
+                    {
+                        type: 'GET',
+                        url: '/get3',
+                    }
+	            ],
+	            complete: function (xhr, status, data) {
+	                for (var i = data.length - 1; i >= 0; i--) {
+	                    console.log(data[i]);
+                    };
+                    console.timeEnd("asyncBatch");
+	            }
+	     });
+	 }
+    </script>
+</body>
+</html>
