@@ -10,7 +10,14 @@
     {
         [Route("get1")]
         // GET api/values 
-        [CacheOutput(ClientTimeSpan = 10, ServerTimeSpan = 10, ExcludeQueryStringFromCacheKey = false)]
+        [
+            CacheOutput
+                (
+                    ClientTimeSpan = 10
+                    , ServerTimeSpan = 10
+                    , ExcludeQueryStringFromCacheKey = false
+                )
+        ]
         [HttpGet]
         public async Task<string> Get1
                             (
