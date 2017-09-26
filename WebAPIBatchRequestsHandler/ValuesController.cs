@@ -20,16 +20,7 @@
             await Task.Delay(1000);
             return string.Format("I am Get1 ({0})! @ [{1}]", data, DateTime.Now.ToString("yyyy-mm-dd HH:mm:ss.fff"));
         }
-        //[Route("get1")]
-        //// GET api/values 
-        //public async Task<string> Get1
-        //            (
-                        
-        //            )
-        //{
-        //    await Task.Delay(1000);
-        //    return string.Format("I am Get1-0 ! @ [{0}]", DateTime.Now.ToString("yyyy-mm-dd HH:mm:ss.fff"));
-        //}
+
         [Route("get2")]
         [HttpGet]
         // GET api/values 
@@ -38,6 +29,7 @@
             await Task.Delay(1000);
             return string.Format("I am Get2 ! @ [{0}]", DateTime.Now.ToString("yyyy-mm-dd HH:mm:ss.fff"));
         }
+
         [Route("get3")]
         // GET api/values
         [HttpGet]
