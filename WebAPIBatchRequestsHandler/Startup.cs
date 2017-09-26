@@ -1,12 +1,12 @@
 ﻿namespace Microshaoft
 {
+    using Microsoft.Owin.FileSystems;
+    using Microsoft.Owin.StaticFiles;
     using Owin;
+    using System.IO;
+    using System.Reflection;
     using System.Web.Http;
     using System.Web.Http.Batch;
-    using Microsoft.Owin.StaticFiles;
-    using Microsoft.Owin.FileSystems;
-    using System.Reflection;
-    using System.IO;
     public class Startup
     {
         // This code configures Web API. The Startup class is specified as a type

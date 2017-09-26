@@ -16,7 +16,7 @@
                 // Create HttpCient and make a request to api/values 
                 HttpClient client = new HttpClient();
                 var requestBaseAddress = serviceBaseAddress;
-                requestBaseAddress = "http://localhost.:9000/";
+                requestBaseAddress = "http://localhost:9000/";
                 client.BaseAddress = new Uri(requestBaseAddress);
 
                 //no batch
@@ -34,12 +34,14 @@
                 {
                     var batchrequest = CreateBatch(client, "api/batch");
                     var response = client.SendAsync(batchrequest).Result;
+                    Console.WriteLine(response.StatusCode);
                 });
                 //async batch
                 Profile("AsyncBatch", () =>
                 {
                     var batchrequest = CreateBatch(client, "api/asyncbatch");
                     var response = client.SendAsync(batchrequest).Result;
+                    Console.WriteLine(response.StatusCode);
                 });
 
 
