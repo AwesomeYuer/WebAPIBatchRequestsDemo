@@ -18,27 +18,39 @@
 
 
     <script type="text/javascript">
+
+        var batchRequestsData = [
+                        {
+                            type: 'GET',
+                            url: '/get1?data={F1:"1111"}',
+                            
+                        },
+                        {
+                            type: 'GET',
+                            url: '/get2',
+                        },
+                        {
+                            type: 'GET',
+                            url: '/get3',
+                        },
+                        {
+                            type: 'POST',
+                            url: '/POST1',
+                            data: {
+                                x: "post1 X"
+                            }
+                        }
+                    ];
+
+
         function sendBatch() {
             console.time("syncBatch");
             $.ajaxBatch({
                 url: '/api/batch',
-                data: [
-                    {
-                    type: 'GET',
-                    url: '/get1'
-                    },
-                    {
-                    type: 'GET',
-                    url: '/get2',
-                    },
-                    {
-                        type: 'GET',
-                        url: '/get3',
-                    }
-                ],
+                data: batchRequestsData,
                 complete: function (xhr, status, data) {
                     for (var i = data.length - 1; i >= 0; i--) {
-                    console.log(data[i]);
+                        console.log(data[i]);
                     };
                     console.timeEnd("syncBatch");
                 }
@@ -48,20 +60,7 @@
             console.time("asyncBatch");
             $.ajaxBatch({
 	            url: '/api/asyncbatch',
-	            data: [
-                    {
-                        type: 'GET',
-                        url: '/get1'
-                    },
-                    {
-                        type: 'GET',
-                        url: '/get2',
-                    },
-                    {
-                        type: 'GET',
-                        url: '/get3',
-                    }
-	            ],
+                data: batchRequestsData,
 	            complete: function (xhr, status, data) {
 	                for (var i = data.length - 1; i >= 0; i--) {
 	                    console.log(data[i]);
