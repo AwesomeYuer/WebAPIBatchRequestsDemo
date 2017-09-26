@@ -10,7 +10,7 @@
     {
         [Route("get1")]
         // GET api/values 
-        [CacheOutput(ClientTimeSpan = 50, ServerTimeSpan = 50)]
+        [CacheOutput(ClientTimeSpan = 10, ServerTimeSpan = 10, ExcludeQueryStringFromCacheKey = false)]
         [HttpGet]
         public async Task<string> Get1
                             (
@@ -43,7 +43,8 @@
         [Route("Post1")]
         // GET api/values
         [HttpPost]
-        [CacheOutput(ClientTimeSpan = 50, ServerTimeSpan = 50)]
+        //post CacheOutput 无效 
+        [CacheOutput(ClientTimeSpan = 50, ServerTimeSpan = 50, ExcludeQueryStringFromCacheKey = false)]
         public async Task<string> Post1
                         (
                             [FromBody]
