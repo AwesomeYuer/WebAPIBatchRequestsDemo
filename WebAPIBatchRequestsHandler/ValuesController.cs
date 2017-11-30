@@ -5,6 +5,7 @@
     using System.Threading.Tasks;
     using System.Web.Http;
     using WebApi.OutputCache.V2;
+    using WebApi.OutputCache.V2.TimeAttributes;
 
     public class ValuesController : ApiController
     {
@@ -19,6 +20,7 @@
                 )
         ]
         [HttpGet]
+        //[CacheOutputUntilToday(23, 59, 59)]
         public async Task<string> Get1
                             (
                                 string data
@@ -30,6 +32,7 @@
 
         [Route("get2")]
         [HttpGet]
+        [CacheOutputUntilToday(23, 59, 59)]
         // GET api/values 
         public async Task<string> Get2()
         {
@@ -40,6 +43,7 @@
         [Route("get3")]
         // GET api/values
         [HttpGet]
+        [CacheOutputUntilToday(23, 59, 59)]
         public async Task<string> Get3()
         {
             await Task.Delay(1000);
@@ -51,7 +55,8 @@
         // GET api/values
         [HttpPost]
         //post CacheOutput 无效 
-        [CacheOutput(ClientTimeSpan = 50, ServerTimeSpan = 50, ExcludeQueryStringFromCacheKey = false)]
+        //[CacheOutput(ClientTimeSpan = 50, ServerTimeSpan = 50, ExcludeQueryStringFromCacheKey = false)]
+        [CacheOutputUntilToday(14,10)]
         public async Task<string> Post1
                         (
                             [FromBody]
