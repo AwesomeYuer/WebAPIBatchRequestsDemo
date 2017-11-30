@@ -56,7 +56,7 @@
         [HttpPost]
         //post CacheOutput 无效 
         //[CacheOutput(ClientTimeSpan = 50, ServerTimeSpan = 50, ExcludeQueryStringFromCacheKey = false)]
-        [CacheOutputUntilToday(14,10)]
+        [CacheOutputUntilToday(23,59,59)]
         public async Task<string> Post1
                         (
                             [FromBody]
