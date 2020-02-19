@@ -2,23 +2,18 @@
 {
     using Newtonsoft.Json.Linq;
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Web.Http;
     using WebApi.OutputCache.V2;
     using WebApi.OutputCache.V2.TimeAttributes;
-
-    public class Aa
-    {
-        public string F1;
-        public int F2;
-
-    }
+    using WebApi.Contracts;
 
     public class ValuesController : ApiController
     {
         [Route("get1")]
         [HttpGet]
-        public Aa[] Process
+        public HttpResult<Aa[]>  Process
                             (
                                 [FromUri]
                                 int id
@@ -26,26 +21,21 @@
         {
             Console.WriteLine("Process");
 
-            return new Aa[] 
-            
-            { 
-                new Aa
-                {
-                    F1= "aaaa"
-                    , F2 = id
-                }
-            
-            };
+            var result = new HttpResult<Aa[]>();
+            result.Topic = typeof(Aa).Name;
+            return result;
         }
-        [Route("post1")]
+        [Route("get2")]
         [HttpGet]
-        public Aa[] Post
+        public HttpResult<Ab[]> Process2
                         (
                             [FromBody]
                             int id
                         )
         {
-            return Process(id);
+            var result = new HttpResult<Ab[]>();
+            result.Topic = typeof(Ab).Name;
+            return result;
         }
 
         

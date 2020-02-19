@@ -1,4 +1,5 @@
 ﻿using Microshaoft;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,16 +28,24 @@ namespace XF.App1
             requestBaseAddress = "http://192.168.1.104:9000/";
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(requestBaseAddress);
-            var batchrequest = client
-                                    .CreateBatchHttpRequestMessage
-                                            (
-                                                "api/asyncbatch"
-                                                , new HttpRequestMessage(HttpMethod.Get, client.BaseAddress + "get1?id=11111")
-                                                , new HttpRequestMessage(HttpMethod.Get, client.BaseAddress + "post1?id=2222")
-                                            );
-            var response = client.SendAsync(batchrequest).Result;
-            var ss = response.Content.ReadAsStringAsync().Result;
-            DisplayAlert($"{client.BaseAddress.ToString()}", ss, "close");
+            var response = client
+                                .SendBatchHttpRequestsMessageAsync
+                                        (
+                                            "api/asyncbatch"
+                                            , new HttpRequestMessage(HttpMethod.Get, client.BaseAddress + "get1?id=11111")
+                                            , new HttpRequestMessage(HttpMethod.Get, client.BaseAddress + "get2?id=2222")
+                                        ).Result;
+            var headers = JsonConvert.SerializeObject(response.Headers);
+            Console.WriteLine($"{nameof(headers)}:{headers}");
+            var ss = response.GetHttpContentsBodyStringsAsEnumerable();
+            var i = 0;
+            foreach (var s in ss)
+            {
+                DisplayAlert($"{client.BaseAddress.ToString()}:{i++}", s, "close");
+            }
+
+           
+            
         }
     }
 }
