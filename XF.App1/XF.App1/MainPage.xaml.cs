@@ -29,7 +29,7 @@ namespace XF.App1
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(requestBaseAddress);
             var response = client
-                                .SendBatchHttpRequestsMessageAsync
+                                .SendBatchAsync
                                         (
                                             "api/asyncbatch"
                                             , new HttpRequestMessage(HttpMethod.Get, client.BaseAddress + "get1?id=11111")
@@ -37,7 +37,7 @@ namespace XF.App1
                                         ).Result;
             var headers = JsonConvert.SerializeObject(response.Headers);
             Console.WriteLine($"{nameof(headers)}:{headers}");
-            var ss = response.GetHttpContentsBodyStringsAsEnumerable();
+            var ss = response.GetContentBodyStringsAsEnumerable();
             var i = 0;
             foreach (var s in ss)
             {

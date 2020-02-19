@@ -35,6 +35,7 @@
         {
             var result = new HttpResult<Ab[]>();
             result.Topic = typeof(Ab).Name;
+            result.Body = new Ab[] { new Ab() { F1 = "hello 你好", F2 = 99 }, new Ab() { F1 = "hello 你好", F2 = 100 } };
             return result;
         }
 

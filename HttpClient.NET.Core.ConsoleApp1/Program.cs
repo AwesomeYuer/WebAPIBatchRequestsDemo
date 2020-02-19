@@ -8,13 +8,14 @@
 
     class Program
     {
+        
         const string serviceBaseAddress = "http://localhost:9000/";
         static async System.Threading.Tasks.Task Main(string[] args)
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(serviceBaseAddress);
             var response = await client
-                                    .SendBatchHttpRequestsMessageAsync
+                                    .SendBatchAsync
                                         (
                                             "api/asyncbatch"
                                             , new HttpRequestMessage(HttpMethod.Get, client.BaseAddress + "get1?id=1111")
@@ -22,7 +23,7 @@
                                         );
             var headers = JsonConvert.SerializeObject(response.Headers);
             Console.WriteLine($"{nameof(headers)}:{headers}");
-            var ss = response.GetHttpContentsBodyStringsAsEnumerable();
+            var ss = response.GetContentBodyStringsAsEnumerable();
             foreach (var s in ss)
             {
                 Console.WriteLine(s);
