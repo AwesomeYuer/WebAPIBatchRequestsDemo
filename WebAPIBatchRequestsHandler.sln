@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.8
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPIBatchRequestsHandler", "WebAPIBatchRequestsHandler\WebAPIBatchRequestsHandler.csproj", "{38427767-F00C-4CE8-BDBB-3A39AE8AEE16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HttpClient.NET.Core.ConsoleApp1", "HttpClient.NET.Core.ConsoleApp1\HttpClient.NET.Core.ConsoleApp1.csproj", "{852EEA8B-F465-4203-ADE0-10B20ABCCE33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{38427767-F00C-4CE8-BDBB-3A39AE8AEE16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38427767-F00C-4CE8-BDBB-3A39AE8AEE16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38427767-F00C-4CE8-BDBB-3A39AE8AEE16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{852EEA8B-F465-4203-ADE0-10B20ABCCE33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{852EEA8B-F465-4203-ADE0-10B20ABCCE33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{852EEA8B-F465-4203-ADE0-10B20ABCCE33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{852EEA8B-F465-4203-ADE0-10B20ABCCE33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
