@@ -106,6 +106,12 @@
     </Content>
     <Content Include="Scripts\batch.js" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WebApiHttpClientHelper\WebApiHttpClientHelper.csproj">
+      <Project>{fe467950-3a4a-4176-833e-56f53fc988b3}</Project>
+      <Name>WebApiHttpClientHelper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

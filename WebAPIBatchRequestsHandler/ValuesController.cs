@@ -24,6 +24,8 @@
                                 int id
                             )
         {
+            Console.WriteLine("Process");
+
             return new Aa[] 
             
             { 

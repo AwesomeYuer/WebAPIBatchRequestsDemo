@@ -7,7 +7,7 @@
     using System.Threading.Tasks;
     class Program
     {
-        const string serviceBaseAddress = "http://localhost:9000/";
+        const string serviceBaseAddress = "http://*:9000/";
         static void Main(string[] args)
         {
             // Start OWIN host 
@@ -15,8 +15,8 @@
             {
                 // Create HttpCient and make a request to api/values 
                 HttpClient client = new HttpClient();
-                var requestBaseAddress = serviceBaseAddress;
-                requestBaseAddress = "http://localhost:9000/";
+                
+                var requestBaseAddress = "http://localhost:9000/";
                 client.BaseAddress = new Uri(requestBaseAddress);
 
                 //no batch
